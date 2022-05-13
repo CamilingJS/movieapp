@@ -11,14 +11,33 @@ const fetchData = async (searchTerm) => {
 
 const input = document.querySelector('input');
 
-let timeoutId; 
+//Debouncing an input: Waiting for some time to pass after the last event to actually do something 
+const debounce = (func, delay = 1000) => {
+    let timeoutId; 
+    return(...args) => {
+        if(timeoutId){
+            clearTimeout(timeoutId)
+        }
+        timeoutId = setTimeout(() => {
+            func.apply(null, args);
+        }, delay)
+    };
+}
+
+// let timeoutId; 
+// const onInput = event => {
+//     if(timeoutId){
+//         clearTimeout(timeoutId);
+//     }
+//     timeoutId = setTimeout(()=>{
+//         fetchData(event.target.value); 
+//     }, 500)
+// };
+
+// input.addEventListener('input', onInput);
+
 const onInput = event => {
-    if(timeoutId){
-        clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(()=>{
-        fetchData(event.target.value); 
-    }, 500)
+    fetchData(event.target.value);
 };
 
-input.addEventListener('input', onInput);
+input.addEventListener('input', debounce(onInput, 500));
