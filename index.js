@@ -108,9 +108,9 @@ const autoCompleteConfig = {
   
     return `
       <article class="media">
-        <figure class="media-left">
+        <figure class="media-left" >
           <p class="image">
-            <img src="${movieDetail.Poster}" />
+            <img style="border-radius:10px" src="${movieDetail.Poster}" />
           </p>
         </figure>
         <div class="media-content">
