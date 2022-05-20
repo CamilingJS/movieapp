@@ -142,6 +142,14 @@ const autoCompleteConfig = {
         <p class="title">${movieDetail.imdbVotes}</p>
         <p class="subtitle">IMDB Votes</p>
       </article>
+      <article data-value=${imdbRating} class="notification is-primary">
+        <p class="title">${movieDetail.Plot}</p>
+        <p class="subtitle">Plot</p>
+      </article>
+      <article data-value=${dollars} class="notification is-primary">
+        <p class="title">${movieDetail.Actors}</p>
+        <p class="subtitle">Actors</p>
+      </article>
     `;
   };
   
